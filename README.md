@@ -1,36 +1,66 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Смарт Декор — Сайт
 
-## Getting Started
+Премиальный сайт для компании по декоративным покрытиям и интерьерным решениям.
 
-First, run the development server:
+## Стек
+- **Next.js 15** (App Router)
+- **TypeScript**
+- **Tailwind CSS**
+- **Шрифты:** Cormorant Garamond (display) + DM Sans (body) — через `next/font/google`
+
+## Запуск
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Открыть: [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Деплой на Vercel
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Загрузить репозиторий на GitHub
+2. Подключить в [vercel.com](https://vercel.com)
+3. Vercel автоматически определит Next.js
 
-## Learn More
+## Структура проекта
 
-To learn more about Next.js, take a look at the following resources:
+```
+smart-decor/
+├── app/
+│   ├── layout.tsx        # Root layout + шрифты + метаданные
+│   ├── page.tsx          # Главная страница
+│   └── globals.css       # Глобальные стили + анимации
+├── components/
+│   ├── Navbar.tsx        # Шапка (фиксированная, с burger меню)
+│   ├── Hero.tsx          # Главный экран
+│   ├── Services.tsx      # Раздел услуг
+│   ├── Portfolio.tsx     # Портфолио
+│   ├── About.tsx         # О компании + статистика
+│   ├── Contact.tsx       # Форма + контакты
+│   └── Footer.tsx        # Подвал
+├── hooks/
+│   └── useReveal.ts      # IntersectionObserver анимации
+└── vercel.json
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Кастомизация
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+### Замена контактов
+В `components/Contact.tsx` найти и заменить:
+- `+7 (900) 000-00-00` → ваш номер
+- `@smartdecor` → ваш Telegram
+- `info@smartdecor.ru` → ваш email
+- URL WhatsApp и Telegram ссылок
 
-## Deploy on Vercel
+### Замена фото в портфолио
+В `components/Portfolio.tsx` заменить `src` в массиве `projects` на URL своих фотографий или разместить их в `public/portfolio/`.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Цвета
+В `tailwind.config.js` в секции `colors`:
+- `gold: '#C9A96E'` — акцентный цвет
+- `obsidian: '#0A0A0A'` — основной фон
+- `graphite: '#111111'` — вторичный фон
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+### Типографика
+Шрифты настраиваются в `app/layout.tsx`. Cormorant Garamond используется для заголовков (display), DM Sans — для текста.
