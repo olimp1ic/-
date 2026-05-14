@@ -1,124 +1,127 @@
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useReveal } from '@/hooks/useReveal';
-
+// Placeholder images from Unsplash — замените на свои фото проектов
 const projects = [
   {
     id: 1,
-    title: 'Резиденция в Остоженке',
-    type: 'Микроцемент · Жилой',
-    year: '2024',
-    src: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80',
-    span: 'md:col-span-2',
-    height: 'h-[480px]',
+    title: "Резиденция на Патриарших",
+    category: "Микроцемент",
+    year: "2024",
+    size: "large", // col-span-2 md
+    img: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=1200&q=80&fit=crop",
   },
   {
     id: 2,
-    title: 'Penthouse в Москва-Сити',
-    type: 'Декоративная штукатурка · Жилой',
-    year: '2024',
-    src: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80',
-    span: '',
-    height: 'h-[480px]',
+    title: "Пентхаус в Москве-Сити",
+    category: "Венецианская штукатурка",
+    year: "2024",
+    size: "normal",
+    img: "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&q=80&fit=crop",
   },
   {
     id: 3,
-    title: 'Ресторан Epoch',
-    type: 'Отделка под ключ · Коммерческий',
-    year: '2023',
-    src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80',
-    span: '',
-    height: 'h-[480px]',
+    title: "Загородный дом, Рублёвка",
+    category: "Отделка под ключ",
+    year: "2023",
+    size: "normal",
+    img: "https://images.unsplash.com/photo-1600607687644-c7171b42498b?w=800&q=80&fit=crop",
   },
   {
     id: 4,
-    title: 'Лофт на Красном Октябре',
-    type: 'Микроцемент · Жилой',
-    year: '2023',
-    src: 'https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=800&q=80',
-    span: 'md:col-span-2',
-    height: 'h-[480px]',
+    title: "Апартаменты, Хамовники",
+    category: "Марморино",
+    year: "2023",
+    size: "normal",
+    img: "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?w=800&q=80&fit=crop",
+  },
+  {
+    id: 5,
+    title: "Бутик-отель, центр",
+    category: "Интерьерный дизайн",
+    year: "2024",
+    size: "large",
+    img: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&q=80&fit=crop",
   },
 ];
 
 export default function Portfolio() {
-  const sectionRef = useReveal();
-
   return (
-    <section id="portfolio" className="py-32 md:py-40 px-6 md:px-12 bg-graphite">
+    <section id="portfolio" className="py-32 md:py-40 px-6 md:px-12 bg-[#0a0a0a]">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div
-          className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8"
-          ref={sectionRef as React.RefObject<HTMLDivElement>}
-        >
+        <div className="flex items-end justify-between mb-20 reveal">
           <div>
-            <div className="flex items-center gap-4 mb-6 reveal">
-              <div className="w-8 h-px bg-gold" />
-              <span className="font-body text-[10px] tracking-widest uppercase text-gold">
-                Избранные работы
+            <div className="flex items-center gap-4 mb-5">
+              <div className="h-px w-8 bg-[#b8a070]" />
+              <span className="text-[10px] tracking-[0.4em] uppercase text-[#b8a070] font-light">
+                Наши работы
               </span>
             </div>
-            <h2 className="font-display font-light text-[clamp(2.5rem,6vw,5rem)] leading-tight text-ivory reveal reveal-delay-1">
+            <h2
+              style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+              className="text-5xl md:text-6xl lg:text-7xl font-light text-white leading-tight"
+            >
               Портфолио
             </h2>
           </div>
-          <div className="flex items-center gap-2 reveal reveal-delay-2">
-            <span className="font-body text-[10px] tracking-widest uppercase text-dim">
-              Более 80 реализованных объектов
-            </span>
-          </div>
+          <a
+            href="#contact"
+            className="hidden md:flex items-center gap-3 text-[11px] tracking-[0.3em] uppercase text-[#5a5a5a] hover:text-[#b8a070] transition-colors duration-300 group"
+          >
+            Обсудить проект
+            <span className="h-px w-8 bg-current group-hover:w-14 transition-all duration-500" />
+          </a>
         </div>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {projects.map((p, i) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+          {projects.map((project, i) => (
             <div
-              key={p.id}
-              className={`portfolio-item relative overflow-hidden group cursor-pointer ${p.span} ${p.height} reveal reveal-delay-${i + 1}`}
+              key={project.id}
+              className={`reveal reveal-delay-${(i % 4) + 1} group relative overflow-hidden aspect-[4/3] ${
+                project.size === "large" ? "md:col-span-2 aspect-[16/7]" : ""
+              }`}
             >
-              <Image
-                src={p.src}
-                alt={p.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
+              {/* Image */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src={project.img}
+                alt={project.title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 filter brightness-75"
               />
 
+              {/* Dark overlay base */}
+              <div className="absolute inset-0 bg-gradient-to-t from-[#080808]/80 via-transparent to-transparent" />
+
               {/* Hover overlay */}
-              <div className="overlay absolute inset-0 bg-gradient-to-t from-obsidian/90 via-obsidian/40 to-transparent flex flex-col justify-end p-8">
-                <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                  <span className="font-body text-[10px] tracking-widest uppercase text-gold block mb-3">
-                    {p.type} · {p.year}
-                  </span>
-                  <h3 className="font-display text-2xl font-light text-ivory">{p.title}</h3>
-                  <div className="mt-4 flex items-center gap-2 text-mid text-xs font-body tracking-widest uppercase">
-                    <span>Смотреть проект</span>
-                    <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
-                      <path d="M0 4H13M13 4L9.5 0.5M13 4L9.5 7.5" stroke="currentColor" strokeWidth="1" />
-                    </svg>
+              <div className="absolute inset-0 bg-[#080808]/60 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Content always visible at bottom */}
+              <div className="absolute bottom-0 left-0 right-0 p-6 md:p-8">
+                <div className="flex items-end justify-between">
+                  <div>
+                    <span className="block text-[10px] tracking-[0.35em] uppercase text-[#b8a070] mb-2 font-light">
+                      {project.category}
+                    </span>
+                    <h3
+                      style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+                      className="text-2xl md:text-3xl font-light text-white"
+                    >
+                      {project.title}
+                    </h3>
                   </div>
+                  <span className="text-[#5a5a5a] text-sm font-light">{project.year}</span>
                 </div>
               </div>
 
-              {/* Corner marker */}
-              <div className="absolute top-4 right-4 w-8 h-8 border border-ivory/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Hover — view button */}
+              <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                <span className="px-6 py-3 border border-white/40 text-white text-[10px] tracking-[0.3em] uppercase font-light">
+                  Смотреть
+                </span>
+              </div>
             </div>
           ))}
-        </div>
-
-        {/* View all */}
-        <div className="mt-16 flex justify-center reveal">
-          <a
-            href="#contact"
-            className="font-body text-xs tracking-widest uppercase text-mid hover:text-gold transition-colors duration-300 flex items-center gap-3 border-b border-muted pb-1"
-          >
-            <span>Обсудить ваш проект</span>
-            <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
-              <path d="M0 4H13M13 4L9.5 0.5M13 4L9.5 7.5" stroke="currentColor" strokeWidth="1" />
-            </svg>
-          </a>
         </div>
       </div>
     </section>

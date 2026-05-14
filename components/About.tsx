@@ -1,80 +1,81 @@
-'use client';
-
-import { useReveal } from '@/hooks/useReveal';
-
 const stats = [
-  { value: '9', label: 'Лет на рынке' },
-  { value: '80+', label: 'Реализованных объектов' },
-  { value: '12', label: 'Мастеров в команде' },
-  { value: '100%', label: 'Проектов сдано в срок' },
+  { value: "8+", label: "лет на рынке" },
+  { value: "340", label: "проектов завершено" },
+  { value: "100%", label: "клиентов рекомендуют" },
+  { value: "12", label: "специалистов в команде" },
 ];
 
 export default function About() {
-  const sectionRef = useReveal();
-
   return (
-    <section id="about" className="py-32 md:py-40 px-6 md:px-12 bg-obsidian overflow-hidden">
+    <section id="about" className="py-32 md:py-40 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
           {/* Left: text */}
-          <div ref={sectionRef as React.RefObject<HTMLDivElement>}>
-            <div className="flex items-center gap-4 mb-6 reveal">
-              <div className="w-8 h-px bg-gold" />
-              <span className="font-body text-[10px] tracking-widest uppercase text-gold">
+          <div className="reveal">
+            <div className="flex items-center gap-4 mb-8">
+              <div className="h-px w-8 bg-[#b8a070]" />
+              <span className="text-[10px] tracking-[0.4em] uppercase text-[#b8a070] font-light">
                 О компании
               </span>
             </div>
-            <h2 className="font-display font-light text-[clamp(2.5rem,5vw,4.5rem)] leading-tight text-ivory mb-10 reveal reveal-delay-1">
-              Детали,{' '}
-              <span className="italic text-gold">которые</span>
+
+            <h2
+              style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+              className="text-5xl md:text-6xl font-light text-white leading-tight mb-8"
+            >
+              Мы не делаем
               <br />
-              имеют значение
+              <span className="italic text-[#b8a070]">обычное</span>
             </h2>
-            <div className="space-y-6 reveal reveal-delay-2">
-              <p className="font-body font-light text-mid text-base leading-loose">
-                Смарт Декор — команда профессиональных отделочников и дизайнеров, специализирующихся
-                на декоративных покрытиях премиум-класса. Мы работаем с частными заказчиками,
-                архитектурными бюро и застройщиками по всей России.
+
+            <div className="space-y-5 text-[#7a7a7a] font-light leading-relaxed text-base">
+              <p>
+                Смарт Декор — это команда мастеров и дизайнеров, объединённых одной философией:
+                материал должен работать как высказывание. Каждая поверхность — это выбор,
+                который отражает характер владельца.
               </p>
-              <p className="font-body font-light text-mid text-base leading-loose">
-                Наш подход: никаких компромиссов в материалах, никаких отступлений от проекта.
-                Каждая поверхность — результат ручного труда мастеров с многолетним опытом работы
-                с европейскими технологиями.
+              <p>
+                Мы специализируемся на тонкослойных декоративных покрытиях, которые невозможно
+                спутать с имитацией. Настоящий микроцемент, настоящая венецианская штукатурка,
+                настоящий результат.
+              </p>
+              <p>
+                Работаем с архитекторами, дизайн-студиями и частными клиентами, которые ценят
+                детали и не идут на компромисс с качеством.
               </p>
             </div>
 
-            <div className="mt-12 reveal reveal-delay-3">
+            <div className="mt-12 flex items-center gap-6">
               <a
                 href="#contact"
-                className="btn-gold border border-gold px-8 py-4 text-xs tracking-widest uppercase text-gold font-body inline-flex"
+                className="px-8 py-3.5 bg-[#b8a070] text-[#080808] text-[11px] tracking-[0.25em] uppercase font-medium hover:bg-[#d4ba8a] transition-colors duration-300"
               >
-                <span>Обсудить проект</span>
+                Начать проект
               </a>
+              <div className="h-px flex-1 bg-gradient-to-r from-[#2a2a2a] to-transparent" />
             </div>
           </div>
 
           {/* Right: stats */}
-          <div className="grid grid-cols-2 gap-px bg-border reveal reveal-delay-2">
-            {stats.map((s, i) => (
+          <div className="grid grid-cols-2 gap-px bg-[#1e1e1e] reveal reveal-delay-2">
+            {stats.map((stat, i) => (
               <div
-                key={i}
-                className="bg-obsidian p-10 flex flex-col justify-between min-h-[160px] border border-transparent hover:border-gold/30 transition-colors duration-300"
+                key={stat.label}
+                className="bg-[#080808] p-10 md:p-12 flex flex-col justify-between group hover:bg-[#0f0f0f] transition-colors duration-500"
               >
-                <span className="font-display text-[3rem] md:text-[3.5rem] font-light text-ivory leading-none">
-                  {s.value}
+                <span
+                  style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+                  className="text-5xl md:text-6xl font-light text-white group-hover:text-[#b8a070] transition-colors duration-500 leading-none mb-4"
+                >
+                  {stat.value}
                 </span>
-                <span className="font-body text-xs text-dim tracking-wide uppercase leading-relaxed">
-                  {s.label}
+                <span className="text-[11px] tracking-[0.2em] uppercase text-[#5a5a5a] font-light">
+                  {stat.label}
                 </span>
               </div>
             ))}
           </div>
         </div>
-      </div>
-
-      {/* Divider */}
-      <div className="max-w-7xl mx-auto mt-32">
-        <hr className="hr-gold" />
       </div>
     </section>
   );

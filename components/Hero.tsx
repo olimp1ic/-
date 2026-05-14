@@ -1,128 +1,131 @@
-'use client';
-
-import { useEffect, useRef } from 'react';
+"use client";
+import { useEffect, useRef } from "react";
 
 export default function Hero() {
-  const heroRef = useRef<HTMLElement>(null);
+  const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const el = heroRef.current;
-    if (!el) return;
-
-    const onMouseMove = (e: MouseEvent) => {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      el.style.setProperty('--mouse-x', `${x}%`);
-      el.style.setProperty('--mouse-y', `${y}%`);
-    };
-
-    window.addEventListener('mousemove', onMouseMove);
-    return () => window.removeEventListener('mousemove', onMouseMove);
+    // Staggered reveal on load
+    const els = heroRef.current?.querySelectorAll("[data-hero]");
+    els?.forEach((el, i) => {
+      setTimeout(() => {
+        (el as HTMLElement).style.opacity = "1";
+        (el as HTMLElement).style.transform = "translateY(0)";
+      }, 300 + i * 180);
+    });
   }, []);
+
+  const heroStyle: React.CSSProperties = {
+    opacity: 0,
+    transform: "translateY(35px)",
+    transition: "opacity 1s cubic-bezier(0.16,1,0.3,1), transform 1s cubic-bezier(0.16,1,0.3,1)",
+  };
 
   return (
     <section
       ref={heroRef}
-      id="hero"
-      className="relative min-h-screen flex flex-col justify-end pb-24 md:pb-32 px-6 md:px-12 overflow-hidden"
-      style={
-        {
-          '--mouse-x': '50%',
-          '--mouse-y': '50%',
-        } as React.CSSProperties
-      }
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background glow */}
+      {/* Background radial glow */}
       <div
-        className="absolute inset-0 opacity-30 pointer-events-none"
+        className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            'radial-gradient(ellipse 80% 60% at 30% 60%, #C9A96E18, transparent 70%), radial-gradient(ellipse 60% 80% at 80% 20%, #C9A96E08, transparent 60%)',
+            "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(184,160,112,0.07) 0%, rgba(184,160,112,0.02) 40%, transparent 70%)",
+        }}
+      />
+      {/* Subtle grid */}
+      <div
+        className="absolute inset-0 pointer-events-none opacity-[0.025]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(255,255,255,0.5) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.5) 1px, transparent 1px)",
+          backgroundSize: "80px 80px",
         }}
       />
 
-      {/* Static radial glow top-right */}
-      <div
-        className="absolute top-0 right-0 w-96 h-96 pointer-events-none animate-glow"
-        style={{
-          background:
-            'radial-gradient(circle at 70% 30%, #C9A96E12, transparent 70%)',
-        }}
-      />
-
-      {/* Vertical label */}
-      <div className="absolute right-6 md:right-12 top-1/2 -translate-y-1/2 flex flex-col items-center gap-4 opacity-40">
-        <div className="w-px h-16 bg-gradient-to-b from-transparent to-gold" />
-        <span
-          className="font-body text-[10px] tracking-widest uppercase text-mid"
-          style={{ writingMode: 'vertical-rl', letterSpacing: '0.3em' }}
-        >
-          Premium Surfaces
-        </span>
-      </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 opacity-40">
-        <span className="font-body text-[9px] tracking-widest uppercase text-mid">Scroll</span>
-        <div className="w-px h-8 bg-gradient-to-b from-gold to-transparent" />
-      </div>
+      {/* Corner decorative lines */}
+      <div className="absolute top-24 left-8 md:left-16 w-px h-20 bg-gradient-to-b from-transparent via-[#b8a070]/40 to-transparent" />
+      <div className="absolute top-24 left-8 md:left-16 h-px w-20 bg-gradient-to-r from-transparent via-[#b8a070]/40 to-transparent" />
+      <div className="absolute bottom-20 right-8 md:right-16 w-px h-20 bg-gradient-to-b from-transparent via-[#b8a070]/40 to-transparent" />
+      <div className="absolute bottom-20 right-8 md:right-16 h-px w-20 bg-gradient-to-r from-transparent via-[#b8a070]/40 to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto w-full">
+      <div className="relative z-10 text-center px-6 max-w-5xl mx-auto">
         {/* Eyebrow */}
-        <div className="flex items-center gap-4 mb-8 animate-fade-up opacity-0-init">
-          <div className="w-8 h-px bg-gold" />
-          <span className="font-body text-[10px] tracking-widest uppercase text-gold">
-            Москва · Декоративные покрытия
+        <div data-hero style={heroStyle} className="flex items-center justify-center gap-4 mb-10">
+          <div className="h-px w-12 bg-[#b8a070]/60" />
+          <span className="text-[10px] tracking-[0.5em] uppercase text-[#b8a070] font-light">
+            Премиальные интерьеры
           </span>
+          <div className="h-px w-12 bg-[#b8a070]/60" />
         </div>
 
-        {/* Main heading */}
-        <h1 className="font-display font-light leading-[0.9] mb-10">
-          <span className="block text-[clamp(3.5rem,10vw,9rem)] text-ivory animate-fade-up opacity-0-init delay-100">
-            Интерьеры,
-          </span>
-          <span className="block text-[clamp(3.5rem,10vw,9rem)] text-ivory animate-fade-up opacity-0-init delay-200">
-            которые
-          </span>
-          <span
-            className="block text-[clamp(3.5rem,10vw,9rem)] italic text-gold animate-fade-up opacity-0-init delay-300"
-          >
-            останавливают
-          </span>
-          <span className="block text-[clamp(3.5rem,10vw,9rem)] text-ivory animate-fade-up opacity-0-init delay-400">
-            взгляд.
-          </span>
+        {/* Main headline */}
+        <h1
+          data-hero
+          style={{
+            ...heroStyle,
+            fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)",
+          }}
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light leading-[0.9] tracking-[-0.02em] text-white mb-4"
+        >
+          Искусство
+        </h1>
+        <h1
+          data-hero
+          style={{
+            ...heroStyle,
+            fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)",
+          }}
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light leading-[0.9] tracking-[-0.02em] italic text-[#b8a070] mb-4"
+        >
+          покрытий
+        </h1>
+        <h1
+          data-hero
+          style={{
+            ...heroStyle,
+            fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)",
+          }}
+          className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light leading-[0.9] tracking-[-0.02em] text-white mb-16"
+        >
+          &amp; поверхностей
         </h1>
 
-        {/* Bottom row */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <p className="font-body font-light text-mid text-base md:text-lg max-w-md leading-relaxed animate-fade-up opacity-0-init delay-500">
-            Микроцемент, декоративная штукатурка и авторские покрытия для жилых и коммерческих
-            пространств. Работаем с архитекторами и частными заказчиками.
-          </p>
-          <div className="flex items-center gap-6 animate-fade-up opacity-0-init delay-600">
-            <a
-              href="#contact"
-              className="btn-gold border border-gold px-8 py-4 text-xs tracking-widest uppercase text-gold font-body whitespace-nowrap"
-            >
-              <span>Оставить заявку</span>
-            </a>
-            <a
-              href="#portfolio"
-              className="font-body text-xs tracking-widest uppercase text-mid hover:text-ivory transition-colors duration-300 whitespace-nowrap flex items-center gap-2"
-            >
-              <span>Портфолио</span>
-              <svg width="14" height="8" viewBox="0 0 14 8" fill="none">
-                <path d="M0 4H13M13 4L9.5 0.5M13 4L9.5 7.5" stroke="currentColor" strokeWidth="1" />
-              </svg>
-            </a>
-          </div>
+        {/* Description */}
+        <p
+          data-hero
+          style={heroStyle}
+          className="text-base md:text-lg font-light text-[#7a7a7a] leading-relaxed max-w-xl mx-auto mb-12 tracking-wide"
+        >
+          Микроцемент, декоративная штукатурка и авторские покрытия.
+          <br className="hidden md:block" />
+          Создаём пространства, которые говорят о вашем статусе.
+        </p>
+
+        {/* CTAs */}
+        <div data-hero style={heroStyle} className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a
+            href="#contact"
+            className="group px-10 py-4 bg-[#b8a070] text-[#080808] text-[11px] tracking-[0.3em] uppercase font-medium hover:bg-[#d4ba8a] transition-all duration-300 relative overflow-hidden"
+          >
+            <span className="relative z-10">Оставить заявку</span>
+          </a>
+          <a
+            href="#portfolio"
+            className="px-10 py-4 border border-white/20 text-white text-[11px] tracking-[0.3em] uppercase font-light hover:border-white/50 transition-all duration-300"
+          >
+            Наши работы
+          </a>
+        </div>
+
+        {/* Scroll indicator */}
+        <div data-hero style={heroStyle} className="mt-20 flex flex-col items-center gap-3 opacity-40">
+          <span className="text-[10px] tracking-[0.4em] uppercase text-[#7a7a7a]">Листать</span>
+          <div className="w-px h-12 bg-gradient-to-b from-[#7a7a7a] to-transparent animate-pulse" />
         </div>
       </div>
-
-      {/* Bottom border */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
     </section>
   );
 }

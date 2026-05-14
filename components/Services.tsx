@@ -1,99 +1,93 @@
-'use client';
-
-import { useReveal } from '@/hooks/useReveal';
-
 const services = [
   {
-    number: '01',
-    title: 'Декоративная штукатурка',
-    description:
-      'Венецианская, марморино, травертин, бетон — создаём уникальные фактуры ручной работы для жилых и коммерческих интерьеров.',
-    tags: ['Венецианская', 'Мраморная', 'Бетон-эффект'],
+    num: "01",
+    title: "Декоративная штукатурка",
+    desc: "Венецианская, марморино, травертино — фактурные покрытия с уникальным характером для каждого пространства.",
+    tags: ["Венецианская", "Марморино", "Травертино"],
   },
   {
-    number: '02',
-    title: 'Микроцемент',
-    description:
-      'Бесшовное покрытие для пола, стен и мебели. Водостойкое, прочное, с матовой или глянцевой финишной обработкой.',
-    tags: ['Пол', 'Стены', 'Мебель'],
+    num: "02",
+    title: "Микроцемент",
+    desc: "Бесшовные поверхности с минералистичной эстетикой. Полы, стены, мебель — единая пластика пространства.",
+    tags: ["Полы", "Стены", "Ванные"],
   },
   {
-    number: '03',
-    title: 'Интерьерный дизайн',
-    description:
-      'Авторские концепции для жилых пространств и коммерческих объектов. От идеи до чертежей и сопровождения реализации.',
-    tags: ['Концепция', 'Чертежи', 'Авторский надзор'],
+    num: "03",
+    title: "Интерьерный дизайн",
+    desc: "Концепции, которые рождаются из диалога с клиентом. Детальная проработка каждого квадратного сантиметра.",
+    tags: ["Концепция", "3D-визуализация", "Авторский надзор"],
   },
   {
-    number: '04',
-    title: 'Отделка под ключ',
-    description:
-      'Комплексная реализация интерьера: от подготовки поверхностей до финальной уборки. Один договор, одна команда.',
-    tags: ['Комплексно', 'Под ключ', 'Гарантия'],
+    num: "04",
+    title: "Отделка под ключ",
+    desc: "От чернового до финишного. Управляем проектом целиком — сроки, бюджет, качество под личным контролем.",
+    tags: ["Черновая", "Чистовая", "Финишная"],
   },
 ];
 
 export default function Services() {
-  const sectionRef = useReveal();
-
   return (
-    <section id="services" className="py-32 md:py-40 px-6 md:px-12 bg-obsidian">
+    <section id="services" className="py-32 md:py-40 px-6 md:px-12">
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
-        <div className="mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8">
-          <div ref={sectionRef as React.RefObject<HTMLDivElement>}>
-            <div className="flex items-center gap-4 mb-6 reveal">
-              <div className="w-8 h-px bg-gold" />
-              <span className="font-body text-[10px] tracking-widest uppercase text-gold">
+        <div className="flex items-end justify-between mb-20 reveal">
+          <div>
+            <div className="flex items-center gap-4 mb-5">
+              <div className="h-px w-8 bg-[#b8a070]" />
+              <span className="text-[10px] tracking-[0.4em] uppercase text-[#b8a070] font-light">
                 Что мы делаем
               </span>
             </div>
-            <h2 className="font-display font-light text-[clamp(2.5rem,6vw,5rem)] leading-tight text-ivory reveal reveal-delay-1">
+            <h2
+              style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+              className="text-5xl md:text-6xl lg:text-7xl font-light text-white leading-tight"
+            >
               Услуги
             </h2>
           </div>
-          <p className="font-body font-light text-mid text-sm max-w-sm leading-relaxed reveal reveal-delay-2">
-            Каждый проект — авторская работа. Используем только проверенные материалы европейских
-            производителей.
+          <p className="hidden md:block max-w-xs text-sm text-[#5a5a5a] font-light leading-relaxed text-right">
+            Каждый проект — это индивидуальная история. Мы не используем шаблоны.
           </p>
         </div>
 
-        {/* Service cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-border">
-          {services.map((s, i) => (
+        {/* Services grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#1e1e1e]">
+          {services.map((svc, i) => (
             <div
-              key={s.number}
-              className={`service-card bg-obsidian border border-transparent p-10 md:p-14 flex flex-col gap-6 cursor-default reveal reveal-delay-${i + 1}`}
+              key={svc.num}
+              className={`reveal reveal-delay-${i + 1} group relative bg-[#080808] p-10 md:p-14 hover:bg-[#0f0f0f] transition-colors duration-500 overflow-hidden cursor-default`}
             >
-              <div className="flex items-start justify-between">
-                <span className="font-display text-[3.5rem] font-light leading-none text-muted">
-                  {s.number}
-                </span>
-                <div className="w-6 h-6 border border-border flex items-center justify-center opacity-40 group-hover:border-gold group-hover:opacity-100 transition-all">
-                  <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
-                    <path
-                      d="M1 9L9 1M9 1H3M9 1V7"
-                      stroke="#C9A96E"
-                      strokeWidth="1"
-                    />
-                  </svg>
-                </div>
-              </div>
+              {/* Hover accent */}
+              <div className="absolute bottom-0 left-0 h-px w-0 bg-[#b8a070] group-hover:w-full transition-all duration-700" />
+              <div className="absolute top-0 right-0 w-px h-0 bg-[#b8a070]/30 group-hover:h-full transition-all duration-700 delay-100" />
 
-              <div>
-                <h3 className="font-display text-2xl md:text-3xl font-light text-ivory mb-4 leading-tight">
-                  {s.title}
-                </h3>
-                <p className="font-body font-light text-mid text-sm leading-relaxed">
-                  {s.description}
-                </p>
-              </div>
+              {/* Number */}
+              <span
+                style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+                className="block text-[80px] md:text-[100px] font-light text-[#161616] leading-none mb-6 group-hover:text-[#1e1e1e] transition-colors duration-500 select-none"
+              >
+                {svc.num}
+              </span>
 
-              <div className="flex flex-wrap gap-2 mt-auto pt-4 border-t border-border">
-                {s.tags.map((tag) => (
+              {/* Title */}
+              <h3
+                style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+                className="text-3xl md:text-4xl font-light text-white mb-4 group-hover:text-[#d4ba8a] transition-colors duration-500"
+              >
+                {svc.title}
+              </h3>
+
+              {/* Description */}
+              <p className="text-sm text-[#5a5a5a] font-light leading-relaxed mb-8 group-hover:text-[#7a7a7a] transition-colors duration-500">
+                {svc.desc}
+              </p>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2">
+                {svc.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-body text-[10px] tracking-widest uppercase text-dim border border-muted px-3 py-1"
+                    className="text-[10px] tracking-[0.25em] uppercase text-[#3d3d3d] border border-[#2a2a2a] px-3 py-1 group-hover:border-[#b8a070]/30 group-hover:text-[#7a7a7a] transition-all duration-500"
                   >
                     {tag}
                   </span>
