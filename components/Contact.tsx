@@ -20,7 +20,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-32 md:py-40 px-6 md:px-12 bg-[#0a0a0a]">
+    <section id="contact" className="py-32 md:py-40 px-6 md:px-12 bg-[#ececec]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32">
           {/* Left: info */}
@@ -34,7 +34,7 @@ export default function Contact() {
 
             <h2
               style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-              className="text-5xl md:text-6xl font-light text-white leading-tight mb-8"
+              className="text-5xl md:text-6xl font-light text-[#1f1f1f] leading-tight mb-8"
             >
               Начните ваш
               <br />
@@ -104,7 +104,7 @@ export default function Contact() {
                 <div className="h-px w-16 bg-[#b8a070] mb-8" />
                 <h3
                   style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-                  className="text-4xl font-light text-white mb-4"
+                  className="text-4xl font-light text-[#1f1f1f] mb-4"
                 >
                   Заявка отправлена
                 </h3>
@@ -125,7 +125,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="Ваше имя"
-                    className="w-full bg-transparent border-b border-[#2a2a2a] focus:border-[#b8a070] text-white placeholder-[#3d3d3d] py-3 text-sm font-light outline-none transition-colors duration-300"
+                    className="w-full bg-transparent border-b border-[#2a2a2a] focus:border-[#b8a070] text-[#1f1f1f] placeholder-[#3d3d3d] py-3 text-sm font-light outline-none transition-colors duration-300"
                   />
                 </div>
 
@@ -140,7 +140,7 @@ export default function Contact() {
                     onChange={handleChange}
                     required
                     placeholder="+7 (___) ___-__-__"
-                    className="w-full bg-transparent border-b border-[#2a2a2a] focus:border-[#b8a070] text-white placeholder-[#3d3d3d] py-3 text-sm font-light outline-none transition-colors duration-300"
+                    className="w-full bg-transparent border-b border-[#2a2a2a] focus:border-[#b8a070] text-[#1f1f1f] placeholder-[#3d3d3d] py-3 text-sm font-light outline-none transition-colors duration-300"
                   />
                 </div>
 
@@ -154,7 +154,7 @@ export default function Contact() {
                     onChange={handleChange}
                     rows={4}
                     placeholder="Расскажите о вашем пространстве и задачах..."
-                    className="w-full bg-transparent border-b border-[#2a2a2a] focus:border-[#b8a070] text-white placeholder-[#3d3d3d] py-3 text-sm font-light outline-none transition-colors duration-300 resize-none"
+                    className="w-full bg-transparent border-b border-[#2a2a2a] focus:border-[#b8a070] text-[#1f1f1f] placeholder-[#3d3d3d] py-3 text-sm font-light outline-none transition-colors duration-300 resize-none"
                   />
                 </div>
 
@@ -179,3 +179,10 @@ export default function Contact() {
     </section>
   );
 }
+
+
+/* SMART DECOR CONTACTS
++7 929 989 0078
+infosmartdecor@mail.ru
+Московская область, г. Балашиха, ул. Свердлова, д. 10
+*/
