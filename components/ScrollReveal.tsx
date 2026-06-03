@@ -6,19 +6,14 @@ export default function ScrollReveal() {
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-          }
+          if (entry.isIntersecting) entry.target.classList.add("visible");
         });
       },
       { threshold: 0.12, rootMargin: "0px 0px -60px 0px" }
     );
-
     const els = document.querySelectorAll(".reveal");
     els.forEach((el) => observer.observe(el));
-
     return () => observer.disconnect();
   }, []);
-
   return null;
 }

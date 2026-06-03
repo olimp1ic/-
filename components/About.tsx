@@ -1,80 +1,87 @@
 const stats = [
-  { value: "8+", label: "лет на рынке" },
-  { value: "340", label: "проектов завершено" },
-  { value: "100%", label: "клиентов рекомендуют" },
-  { value: "12", label: "специалистов в команде" },
+  { value: "28 000+", label: "м² выполнено за год" },
+  { value: "8",       label: "крупных ЖК в портфеле" },
+  { value: "5",       label: "ведущих застройщиков" },
+  { value: "100%",    label: "промышленное оборудование" },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-32 md:py-40 px-6 md:px-12">
+    <section id="about" className="py-32 md:py-40 px-6 md:px-12" style={{ background: "var(--bg-base)" }}>
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
-          {/* Left: text */}
+
+          {/* Text */}
           <div className="reveal">
             <div className="flex items-center gap-4 mb-8">
-              <div className="h-px w-8 bg-[#b8a070]" />
-              <span className="text-[10px] tracking-[0.4em] uppercase text-[#b8a070] font-light">
+              <div className="h-px w-8" style={{ background: "var(--heading)" }} />
+              <span className="text-[10px] tracking-[0.4em] uppercase font-light" style={{ color: "var(--body)" }}>
                 О компании
               </span>
             </div>
 
             <h2
-              style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-              className="text-5xl md:text-6xl font-light text-white leading-tight mb-8"
+              style={{ fontFamily: "var(--font-cormorant)", color: "var(--heading)" }}
+              className="text-5xl md:text-6xl font-light leading-tight mb-8"
             >
-              Мы не делаем
+              Точность
               <br />
-              <span className="italic text-[#b8a070]">обычное</span>
+              <span className="italic" style={{ color: "var(--mid)" }}>в каждом метре</span>
             </h2>
 
-            <div className="space-y-5 text-[#7a7a7a] font-light leading-relaxed text-base">
+            <div className="space-y-5 font-light leading-relaxed text-base" style={{ color: "var(--mid)" }}>
               <p>
-                Смарт Декор — это команда мастеров и дизайнеров, объединённых одной философией:
-                материал должен работать как высказывание. Каждая поверхность — это выбор,
-                который отражает характер владельца.
+                Наше механизированное нанесение позволяет безупречно выполнять сложные фактуры
+                на объектах любой площади — от элитных апартаментов до крупных коммерческих
+                пространств.
               </p>
               <p>
-                Мы специализируемся на тонкослойных декоративных покрытиях, которые невозможно
-                спутать с имитацией. Настоящий микроцемент, настоящая венецианская штукатурка,
-                настоящий результат.
+                Благодаря отработанной технологии и слаженной работе команды профессионалов,
+                воспитанной не одним объектом, мы гарантируем высочайшее качество на каждом
+                этапе: от подготовки основания до финишного покрытия.
               </p>
               <p>
-                Работаем с архитекторами, дизайн-студиями и частными клиентами, которые ценят
-                детали и не идут на компромисс с качеством.
+                Используем только промышленное оборудование и премиальные материалы — это даёт
+                возможность реализовывать самые смелые дизайнерские решения с идеальной
+                геометрией и долговечностью.
               </p>
             </div>
 
             <div className="mt-12 flex items-center gap-6">
               <a
                 href="#contact"
-                className="px-8 py-3.5 bg-[#b8a070] text-[#080808] text-[11px] tracking-[0.25em] uppercase font-medium hover:bg-[#d4ba8a] transition-colors duration-300"
+                className="px-8 py-3.5 text-[11px] tracking-[0.25em] uppercase font-light transition-opacity duration-300 hover:opacity-75"
+                style={{ background: "var(--heading)", color: "var(--bg-base)" }}
               >
-                Начать проект
+                Обсудить объект
               </a>
-              <div className="h-px flex-1 bg-gradient-to-r from-[#2a2a2a] to-transparent" />
+              <div className="h-px flex-1" style={{ background: "linear-gradient(to right, var(--line), transparent)" }} />
             </div>
           </div>
 
-          {/* Right: stats */}
-          <div className="grid grid-cols-2 gap-px bg-[#1e1e1e] reveal reveal-delay-2">
-            {stats.map((stat, i) => (
+          {/* Stats */}
+          <div className="grid grid-cols-2 gap-px reveal reveal-delay-2" style={{ background: "var(--line)" }}>
+            {stats.map(s => (
               <div
-                key={stat.label}
-                className="bg-[#080808] p-10 md:p-12 flex flex-col justify-between group hover:bg-[#0f0f0f] transition-colors duration-500"
+                key={s.label}
+                className="p-10 md:p-12 flex flex-col justify-between transition-colors duration-500 group"
+                style={{ background: "var(--bg-base)" }}
+                onMouseEnter={e => (e.currentTarget.style.background = "var(--bg-alt)")}
+                onMouseLeave={e => (e.currentTarget.style.background = "var(--bg-base)")}
               >
                 <span
-                  style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-                  className="text-5xl md:text-6xl font-light text-white group-hover:text-[#b8a070] transition-colors duration-500 leading-none mb-4"
+                  style={{ fontFamily: "var(--font-cormorant)", color: "var(--heading)" }}
+                  className="text-4xl md:text-5xl font-light leading-none mb-4"
                 >
-                  {stat.value}
+                  {s.value}
                 </span>
-                <span className="text-[11px] tracking-[0.2em] uppercase text-[#5a5a5a] font-light">
-                  {stat.label}
+                <span className="text-[11px] tracking-[0.2em] uppercase font-light" style={{ color: "var(--mid)" }}>
+                  {s.label}
                 </span>
               </div>
             ))}
           </div>
+
         </div>
       </div>
     </section>

@@ -10,7 +10,7 @@ import ScrollReveal from "@/components/ScrollReveal";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#080808]">
+    <main className="min-h-screen bg-[#f5f4f2]">
       <CursorGlow />
       <ScrollReveal />
       <Header />
