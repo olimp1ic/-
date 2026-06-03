@@ -9,8 +9,8 @@ const nav = [
 ];
 
 export default function Header() {
-  const [scrolled,  setScrolled]  = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fn = () => setScrolled(window.scrollY > 60);
@@ -21,78 +21,75 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-        scrolled ? "border-b" : ""
+        scrolled
+          ? "bg-[#f5f4f2]/95 backdrop-blur-md border-b border-[#d4d3cf]"
+          : "bg-transparent"
       }`}
-      style={{
-        background: scrolled ? "rgba(245,244,242,0.96)" : "transparent",
-        backdropFilter: scrolled ? "blur(12px)" : "none",
-        borderColor: "var(--line)",
-      }}
     >
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
 
         {/* Logo */}
         <a href="#" className="flex flex-col leading-none group">
           <span
-            className="text-2xl font-light tracking-[0.15em] transition-colors duration-500"
-            style={{ fontFamily: "var(--font-cormorant)", color: "var(--heading)" }}
+            style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+            className="text-2xl font-light tracking-[0.15em] text-[#1c1c1c] group-hover:text-[#5a5a5a] transition-colors duration-500"
           >
             СМАРТ ДЕКОР
           </span>
-          <span className="text-[10px] font-light tracking-[0.4em] uppercase mt-0.5"
-                style={{ color: "var(--muted)" }}>
+          <span className="text-[10px] font-light tracking-[0.4em] text-[#b0afa9] mt-0.5 uppercase">
             Декоративные покрытия
           </span>
         </a>
 
         {/* Desktop nav */}
         <nav className="hidden md:flex items-center gap-10">
-          {nav.map(l => (
-            <a key={l.href} href={l.href}
-               className="text-[11px] tracking-[0.3em] uppercase font-light transition-colors duration-300 hover:opacity-100"
-               style={{ color: "var(--mid)" }}
-               onMouseEnter={e => (e.currentTarget.style.color = "var(--heading)")}
-               onMouseLeave={e => (e.currentTarget.style.color = "var(--mid)")}>
-              {l.label}
+          {nav.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              className="text-[11px] tracking-[0.3em] uppercase text-[#7a7a7a] hover:text-[#1c1c1c] transition-colors duration-300 font-light"
+            >
+              {link.label}
             </a>
           ))}
-          <a href="#contact"
-             className="ml-4 px-6 py-2.5 border text-[11px] tracking-[0.25em] uppercase font-light transition-all duration-300"
-             style={{ borderColor: "var(--heading)", color: "var(--heading)" }}
-             onMouseEnter={e => {
-               (e.currentTarget as HTMLElement).style.background = "var(--heading)";
-               (e.currentTarget as HTMLElement).style.color      = "var(--bg-base)";
-             }}
-             onMouseLeave={e => {
-               (e.currentTarget as HTMLElement).style.background = "transparent";
-               (e.currentTarget as HTMLElement).style.color      = "var(--heading)";
-             }}>
+          <a
+            href="#contact"
+            className="ml-4 px-6 py-2.5 border border-[#1c1c1c]/60 text-[11px] tracking-[0.25em] uppercase text-[#1c1c1c] hover:bg-[#1c1c1c] hover:text-[#f5f4f2] transition-all duration-300 font-light"
+          >
             Заявка
           </a>
         </nav>
 
         {/* Burger */}
-        <button className="md:hidden flex flex-col gap-1.5 p-2" onClick={() => setMenuOpen(!menuOpen)}>
-          <span className={`block h-px w-6 transition-all duration-300 ${menuOpen ? "rotate-45 translate-y-2" : ""}`} style={{ background: "var(--heading)" }} />
-          <span className={`block h-px w-6 transition-all duration-300 ${menuOpen ? "opacity-0" : ""}`}               style={{ background: "var(--heading)" }} />
-          <span className={`block h-px w-6 transition-all duration-300 ${menuOpen ? "-rotate-45 -translate-y-2" : ""}`} style={{ background: "var(--heading)" }} />
+        <button
+          className="md:hidden flex flex-col gap-1.5 p-2"
+          onClick={() => setOpen(!open)}
+          aria-label="Меню"
+        >
+          <span className={`block h-px w-6 bg-[#1c1c1c] transition-all duration-300 ${open ? "rotate-45 translate-y-2" : ""}`} />
+          <span className={`block h-px w-6 bg-[#1c1c1c] transition-all duration-300 ${open ? "opacity-0" : ""}`} />
+          <span className={`block h-px w-6 bg-[#1c1c1c] transition-all duration-300 ${open ? "-rotate-45 -translate-y-2" : ""}`} />
         </button>
       </div>
 
       {/* Mobile menu */}
-      <div className={`md:hidden overflow-hidden transition-all duration-500 ${menuOpen ? "max-h-80 border-b" : "max-h-0"}`}
-           style={{ background: "rgba(245,244,242,0.98)", backdropFilter: "blur(12px)", borderColor: "var(--line)" }}>
+      <div className={`md:hidden overflow-hidden transition-all duration-500 bg-[#f5f4f2]/98 backdrop-blur-md ${open ? "max-h-96 border-b border-[#d4d3cf]" : "max-h-0"}`}>
         <nav className="flex flex-col px-6 py-8 gap-6">
-          {nav.map(l => (
-            <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}
-               className="text-[12px] tracking-[0.3em] uppercase font-light"
-               style={{ color: "var(--mid)" }}>
-              {l.label}
+          {nav.map((link) => (
+            <a
+              key={link.href}
+              href={link.href}
+              onClick={() => setOpen(false)}
+              className="text-[12px] tracking-[0.3em] uppercase text-[#7a7a7a] hover:text-[#1c1c1c] transition-colors duration-300"
+            >
+              {link.label}
             </a>
           ))}
-          <a href="#contact" onClick={() => setMenuOpen(false)}
-             className="mt-2 px-6 py-3 border text-[11px] tracking-[0.25em] uppercase font-light text-center transition-all duration-300"
-             style={{ borderColor: "var(--heading)", color: "var(--heading)" }}>
+          <a
+            href="#contact"
+            onClick={() => setOpen(false)}
+            className="mt-2 px-6 py-3 border border-[#1c1c1c]/60 text-[11px] tracking-[0.25em] uppercase text-[#1c1c1c] text-center hover:bg-[#1c1c1c] hover:text-[#f5f4f2] transition-all duration-300"
+          >
             Оставить заявку
           </a>
         </nav>

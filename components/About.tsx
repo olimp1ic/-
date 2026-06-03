@@ -1,35 +1,35 @@
 const stats = [
   { value: "28 000+", label: "м² выполнено за год" },
   { value: "8",       label: "крупных ЖК в портфеле" },
-  { value: "5",       label: "ведущих застройщиков" },
   { value: "100%",    label: "промышленное оборудование" },
+  { value: "0",       label: "компромиссов по качеству" },
 ];
 
 export default function About() {
   return (
-    <section id="about" className="py-32 md:py-40 px-6 md:px-12" style={{ background: "var(--bg-base)" }}>
+    <section id="about" className="py-32 md:py-40 px-6 md:px-12 bg-[#f5f4f2]">
       <div className="max-w-7xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
 
-          {/* Text */}
+          {/* Left: text */}
           <div className="reveal">
             <div className="flex items-center gap-4 mb-8">
-              <div className="h-px w-8" style={{ background: "var(--heading)" }} />
-              <span className="text-[10px] tracking-[0.4em] uppercase font-light" style={{ color: "var(--body)" }}>
+              <div className="h-px w-8 bg-[#1c1c1c]" />
+              <span className="text-[10px] tracking-[0.4em] uppercase text-[#5a5a5a] font-light">
                 О компании
               </span>
             </div>
 
             <h2
-              style={{ fontFamily: "var(--font-cormorant)", color: "var(--heading)" }}
-              className="text-5xl md:text-6xl font-light leading-tight mb-8"
+              style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+              className="text-5xl md:text-6xl font-light text-[#1c1c1c] leading-tight mb-8"
             >
               Точность
               <br />
-              <span className="italic" style={{ color: "var(--mid)" }}>в каждом метре</span>
+              <span className="italic text-[#5a5a5a]">в каждом метре</span>
             </h2>
 
-            <div className="space-y-5 font-light leading-relaxed text-base" style={{ color: "var(--mid)" }}>
+            <div className="space-y-5 text-[#7a7a7a] font-light leading-relaxed text-base">
               <p>
                 Наше механизированное нанесение позволяет безупречно выполнять сложные фактуры
                 на объектах любой площади — от элитных апартаментов до крупных коммерческих
@@ -50,32 +50,28 @@ export default function About() {
             <div className="mt-12 flex items-center gap-6">
               <a
                 href="#contact"
-                className="px-8 py-3.5 text-[11px] tracking-[0.25em] uppercase font-light transition-opacity duration-300 hover:opacity-75"
-                style={{ background: "var(--heading)", color: "var(--bg-base)" }}
+                className="px-8 py-3.5 bg-[#1c1c1c] text-[#f5f4f2] text-[11px] tracking-[0.25em] uppercase font-light hover:bg-[#2e2e2e] transition-colors duration-300"
               >
-                Обсудить объект
+                Обсудить проект
               </a>
-              <div className="h-px flex-1" style={{ background: "linear-gradient(to right, var(--line), transparent)" }} />
+              <div className="h-px flex-1 bg-gradient-to-r from-[#d4d3cf] to-transparent" />
             </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-2 gap-px reveal reveal-delay-2" style={{ background: "var(--line)" }}>
-            {stats.map(s => (
+          {/* Right: stats */}
+          <div className="grid grid-cols-2 gap-px bg-[#d4d3cf] reveal reveal-delay-2">
+            {stats.map((s) => (
               <div
                 key={s.label}
-                className="p-10 md:p-12 flex flex-col justify-between transition-colors duration-500 group"
-                style={{ background: "var(--bg-base)" }}
-                onMouseEnter={e => (e.currentTarget.style.background = "var(--bg-alt)")}
-                onMouseLeave={e => (e.currentTarget.style.background = "var(--bg-base)")}
+                className="bg-[#f5f4f2] hover:bg-[#eeede9] p-10 md:p-12 flex flex-col justify-between transition-colors duration-500 group"
               >
                 <span
-                  style={{ fontFamily: "var(--font-cormorant)", color: "var(--heading)" }}
-                  className="text-4xl md:text-5xl font-light leading-none mb-4"
+                  style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+                  className="text-4xl md:text-5xl font-light text-[#1c1c1c] leading-none mb-4"
                 >
                   {s.value}
                 </span>
-                <span className="text-[11px] tracking-[0.2em] uppercase font-light" style={{ color: "var(--mid)" }}>
+                <span className="text-[11px] tracking-[0.2em] uppercase text-[#7a7a7a] font-light">
                   {s.label}
                 </span>
               </div>
