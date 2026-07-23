@@ -108,7 +108,7 @@ export default function Portfolio() {
             </h2>
           </div>
           <p className="hidden md:block max-w-xs text-sm text-[#7a7a7a] font-light leading-relaxed text-right">
-            Объекты в Москве и области, где мы наносили декоративные покрытия.
+            Часть реализованных проектов в Москве и области.
           </p>
         </div>
 
