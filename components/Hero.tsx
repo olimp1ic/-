@@ -42,15 +42,15 @@ export default function Hero() {
       <div className="absolute bottom-20 right-8 md:right-16 h-px w-20 bg-gradient-to-r from-transparent via-[#b0afa9] to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 text-center px-5 md:px-6 max-w-5xl mx-auto w-full">
+      <div className="relative z-10 text-center px-5 md:px-6 max-w-5xl mx-auto w-full pt-28 md:pt-32">
 
         {/* Eyebrow */}
-        <div data-hero style={s} className="flex items-center justify-center gap-3 md:gap-4 mb-8 md:mb-10">
-          <div className="h-px w-6 md:w-12 bg-[#b0afa9] flex-shrink-0" />
-          <span className="text-[9px] md:text-[10px] tracking-[0.25em] md:tracking-[0.5em] uppercase text-[#7a7a7a] font-light text-center">
-            Отделочные работы под ключ
+        <div data-hero style={s} className="flex items-center justify-center gap-3 md:gap-4 mb-10 md:mb-14">
+          <div className="h-px w-4 md:w-12 bg-[#b0afa9] flex-shrink-0" />
+          <span className="text-[9px] md:text-[10px] tracking-[0.15em] md:tracking-[0.4em] uppercase text-[#7a7a7a] font-light text-center whitespace-nowrap">
+            Малярные и отделочные работы
           </span>
-          <div className="h-px w-6 md:w-12 bg-[#b0afa9] flex-shrink-0" />
+          <div className="h-px w-4 md:w-12 bg-[#b0afa9] flex-shrink-0" />
         </div>
 
         {/* Headlines */}
@@ -69,7 +69,7 @@ export default function Hero() {
 
         {/* Description */}
         <p data-hero style={s}
-          className="text-sm md:text-lg font-light text-[#7a7a7a] leading-relaxed max-w-xl mx-auto mb-10 md:mb-12 tracking-wide px-2">
+          className="text-sm md:text-lg font-light text-[#7a7a7a] leading-[1.9] md:leading-[2] max-w-xl mx-auto mb-10 md:mb-12 tracking-wide px-2">
           Штукатурка, шпаклёвка, покраска и декоративные покрытия
           <br className="hidden md:block" />
           механизированным способом. Полный цикл на объектах любой площади.
