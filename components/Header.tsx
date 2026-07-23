@@ -31,7 +31,7 @@ export default function Header() {
 
         {/* Logo */}
         <a href="#" className="flex items-center gap-2.5 md:gap-3.5 group">
-          <Logo className="w-7 h-7 md:w-9 md:h-9 text-[#1c1c1c] group-hover:text-[#5a5a5a] transition-colors duration-500 flex-shrink-0" />
+          <Logo className="w-7 md:w-9 h-auto text-[#1c1c1c] group-hover:text-[#5a5a5a] transition-colors duration-500 flex-shrink-0" />
           <div className="flex flex-col leading-none">
             <span
               style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}

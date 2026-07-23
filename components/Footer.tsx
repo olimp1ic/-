@@ -6,7 +6,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
-            <Logo className="w-8 h-8 text-[#1c1c1c] flex-shrink-0" />
+            <Logo className="w-8 h-auto text-[#1c1c1c] flex-shrink-0" />
             <div className="flex flex-col items-start">
               <span
                 style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
