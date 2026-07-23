@@ -7,9 +7,9 @@ const stats = [
 
 export default function About() {
   return (
-    <section id="about" className="py-32 md:py-40 px-6 md:px-12 bg-[#f5f4f2]">
+    <section id="about" className="py-20 md:py-40 px-5 md:px-12 bg-[#f5f4f2]">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 lg:gap-32 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-32 items-center">
 
           {/* Left: text */}
           <div className="reveal">
@@ -22,7 +22,7 @@ export default function About() {
 
             <h2
               style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-              className="text-5xl md:text-6xl font-light text-[#1c1c1c] leading-tight mb-8"
+              className="text-4xl md:text-6xl font-light text-[#1c1c1c] leading-tight mb-6 md:mb-8"
             >
               О компании
             </h2>
@@ -44,10 +44,10 @@ export default function About() {
               </p>
             </div>
 
-            <div className="mt-12 flex items-center gap-6">
+            <div className="mt-10 md:mt-12 flex items-center gap-6">
               <a
                 href="#contact"
-                className="px-8 py-3.5 bg-[#1c1c1c] text-[#f5f4f2] text-[11px] tracking-[0.25em] uppercase font-light hover:bg-[#2e2e2e] transition-colors duration-300"
+                className="px-7 md:px-8 py-3.5 bg-[#1c1c1c] text-[#f5f4f2] text-[10px] md:text-[11px] tracking-[0.2em] md:tracking-[0.25em] uppercase font-light hover:bg-[#2e2e2e] transition-colors duration-300 whitespace-nowrap"
               >
                 Оставить заявку
               </a>
@@ -60,15 +60,15 @@ export default function About() {
             {stats.map((s) => (
               <div
                 key={s.label}
-                className="bg-[#f5f4f2] hover:bg-[#eeede9] p-10 md:p-12 flex flex-col justify-between transition-colors duration-500 group"
+                className="bg-[#f5f4f2] hover:bg-[#eeede9] p-7 md:p-12 flex flex-col justify-between transition-colors duration-500 group"
               >
                 <span
                   style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-                  className="text-4xl md:text-5xl font-light text-[#1c1c1c] leading-none mb-4"
+                  className="text-3xl md:text-5xl font-light text-[#1c1c1c] leading-none mb-3 md:mb-4"
                 >
                   {s.value}
                 </span>
-                <span className="text-[11px] tracking-[0.2em] uppercase text-[#7a7a7a] font-light">
+                <span className="text-[10px] md:text-[11px] tracking-[0.15em] md:tracking-[0.2em] uppercase text-[#7a7a7a] font-light leading-relaxed">
                   {s.label}
                 </span>
               </div>

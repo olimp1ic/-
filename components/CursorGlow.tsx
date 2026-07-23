@@ -3,6 +3,9 @@ import { useEffect } from "react";
 
 export default function CursorGlow() {
   useEffect(() => {
+    // не показываем на мобильных / тач-устройствах
+    if (window.matchMedia("(hover: none)").matches) return;
+
     const el = document.createElement("div");
     el.className = "cursor-glow";
     document.body.appendChild(el);

@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-[#d4d3cf] px-6 md:px-12 py-12 bg-[#f5f4f2]">
+    <footer className="border-t border-[#d4d3cf] px-5 md:px-12 py-10 md:py-12 bg-[#f5f4f2]">
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex flex-col items-center md:items-start">
@@ -15,7 +15,7 @@ export default function Footer() {
             </span>
           </div>
 
-          <div className="flex items-center gap-8">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
             {["Услуги", "Объекты", "О нас", "Контакты"].map((item, i) => (
               <a
                 key={item}
@@ -34,7 +34,7 @@ export default function Footer() {
 
         <div className="mt-8 h-px w-full bg-gradient-to-r from-transparent via-[#d4d3cf] to-transparent" />
 
-        <p className="text-center text-[10px] text-[#b0afa9] mt-6 font-light tracking-wider">
+        <p className="text-center text-[9px] md:text-[10px] text-[#b0afa9] mt-6 font-light tracking-wider leading-relaxed">
           Московская область, г. Балашиха, ул. Свердлова, д. 10 &nbsp;·&nbsp; +7 929 989 00 78
         </p>
       </div>

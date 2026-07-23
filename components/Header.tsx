@@ -26,17 +26,17 @@ export default function Header() {
           : "bg-transparent"
       }`}
     >
-      <div className="max-w-7xl mx-auto px-6 md:px-12 flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-5 md:px-12 flex items-center justify-between h-16 md:h-20">
 
         {/* Logo */}
         <a href="#" className="flex flex-col leading-none group">
           <span
             style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-            className="text-2xl font-light tracking-[0.15em] text-[#1c1c1c] group-hover:text-[#5a5a5a] transition-colors duration-500"
+            className="text-lg md:text-2xl font-light tracking-[0.12em] md:tracking-[0.15em] text-[#1c1c1c] group-hover:text-[#5a5a5a] transition-colors duration-500 whitespace-nowrap"
           >
             СМАРТ ДЕКОР
           </span>
-          <span className="text-[10px] font-light tracking-[0.4em] text-[#b0afa9] mt-0.5 uppercase">
+          <span className="text-[8px] md:text-[10px] font-light tracking-[0.25em] md:tracking-[0.4em] text-[#b0afa9] mt-0.5 uppercase whitespace-nowrap">
             Декоративные покрытия
           </span>
         </a>

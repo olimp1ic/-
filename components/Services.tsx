@@ -4,7 +4,7 @@ const services = [
   {
     num: "01",
     title: "Механизированное нанесение",
-    desc: "Наносим декоративную штукатурку и шпаклёвку машинным способом. Работаем быстрее ручного нанесения и держим ровный слой на больших площадях.",
+    desc: "Наносим декоративную штукатурку и шпаклёвку механизированным способом. Работаем быстрее ручного нанесения и держим ровный слой на больших площадях.",
   },
   {
     num: "02",
@@ -33,11 +33,11 @@ const textures = [
 
 export default function Services() {
   return (
-    <section id="services" className="py-32 md:py-40 px-6 md:px-12 bg-[#f5f4f2]">
+    <section id="services" className="py-20 md:py-40 px-5 md:px-12 bg-[#f5f4f2]">
       <div className="max-w-7xl mx-auto">
 
         {/* Header */}
-        <div className="flex items-end justify-between mb-20 reveal">
+        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-20 reveal">
           <div>
             <div className="flex items-center gap-4 mb-5">
               <div className="h-px w-8 bg-[#1c1c1c]" />
@@ -47,7 +47,7 @@ export default function Services() {
             </div>
             <h2
               style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-              className="text-5xl md:text-6xl lg:text-7xl font-light text-[#1c1c1c] leading-tight"
+              className="text-4xl md:text-6xl lg:text-7xl font-light text-[#1c1c1c] leading-tight"
             >
               Услуги
             </h2>
@@ -62,21 +62,21 @@ export default function Services() {
           {services.map((svc, i) => (
             <div
               key={svc.num}
-              className={`reveal reveal-delay-${i + 1} group relative bg-[#f5f4f2] hover:bg-[#eeede9] p-10 md:p-14 overflow-hidden cursor-default transition-colors duration-500`}
+              className={`reveal reveal-delay-${i + 1} group relative bg-[#f5f4f2] hover:bg-[#eeede9] p-7 md:p-14 overflow-hidden cursor-default transition-colors duration-500`}
             >
               <div className="absolute bottom-0 left-0 h-px w-0 bg-[#1c1c1c] group-hover:w-full transition-all duration-700" />
               <div className="absolute top-0 right-0 w-px h-0 bg-[#b0afa9] group-hover:h-full transition-all duration-700 delay-100" />
 
               <span
                 style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-                className="block text-[80px] md:text-[100px] font-light text-[#e8e7e3] group-hover:text-[#d4d3cf] leading-none mb-6 select-none transition-colors duration-500"
+                className="block text-[56px] md:text-[100px] font-light text-[#e8e7e3] group-hover:text-[#d4d3cf] leading-none mb-4 md:mb-6 select-none transition-colors duration-500"
               >
                 {svc.num}
               </span>
 
               <h3
                 style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-                className="text-3xl md:text-4xl font-light text-[#1c1c1c] mb-4 leading-tight"
+                className="text-2xl md:text-4xl font-light text-[#1c1c1c] mb-3 md:mb-4 leading-tight"
               >
                 {svc.title}
               </h3>
@@ -89,8 +89,8 @@ export default function Services() {
         </div>
 
         {/* Textures — фото-сетка */}
-        <div className="mt-16 md:mt-24 reveal">
-          <div className="flex items-center gap-4 mb-10">
+        <div className="mt-12 md:mt-24 reveal">
+          <div className="flex items-center gap-4 mb-6 md:mb-10">
             <div className="h-px w-8 bg-[#1c1c1c]" />
             <span className="text-[10px] tracking-[0.4em] uppercase text-[#5a5a5a] font-light">
               Наши фактуры
