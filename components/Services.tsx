@@ -1,3 +1,5 @@
+"use client";
+
 const services = [
   {
     num: "01",
@@ -16,13 +18,17 @@ const services = [
   },
 ];
 
+// ────────────────────────────────────────────────────────────
+// Фото фактур: положи файлы в /public/images/textures/
+// и пропиши имя в поле img. Пока фото нет — карточка тёмная с названием.
+// ────────────────────────────────────────────────────────────
 const textures = [
-  "Карта мира",
-  "Американка",
-  "Капля",
-  "Арт-бетон",
-  "Песчаник",
-  "Шёлк",
+  { name: "Карта мира", img: "/images/textures/karta-mira.jpg" },
+  { name: "Американка", img: "/images/textures/amerikanka.jpg" },
+  { name: "Капля",      img: "/images/textures/kaplya.jpg" },
+  { name: "Арт-бетон",  img: "/images/textures/art-beton.jpg" },
+  { name: "Песчаник",   img: "/images/textures/peschanik.jpg" },
+  { name: "Шёлк",       img: "/images/textures/shelk.jpg" },
 ];
 
 export default function Services() {
@@ -82,23 +88,43 @@ export default function Services() {
           ))}
         </div>
 
-        {/* Textures row */}
-        <div className="mt-2 bg-[#1c1c1c] px-8 md:px-14 py-10 md:py-12 reveal">
-          <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
-            <span className="text-[10px] tracking-[0.4em] uppercase text-[#b0afa9] font-light whitespace-nowrap">
+        {/* Textures — фото-сетка */}
+        <div className="mt-16 md:mt-24 reveal">
+          <div className="flex items-center gap-4 mb-10">
+            <div className="h-px w-8 bg-[#1c1c1c]" />
+            <span className="text-[10px] tracking-[0.4em] uppercase text-[#5a5a5a] font-light">
               Наши фактуры
             </span>
-            <div className="flex flex-wrap gap-x-8 gap-y-4">
-              {textures.map((t) => (
-                <span
-                  key={t}
-                  style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-                  className="text-2xl md:text-3xl font-light text-[#f5f4f2] hover:text-[#b0afa9] transition-colors duration-300 cursor-default"
-                >
-                  {t}
-                </span>
-              ))}
-            </div>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2">
+            {textures.map((t, i) => (
+              <div
+                key={t.name}
+                className={`reveal reveal-delay-${(i % 6) + 1} group relative overflow-hidden aspect-square bg-[#1c1c1c]`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={t.img}
+                  alt={`Фактура ${t.name}`}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.opacity = "0";
+                  }}
+                />
+                {/* Затемнение */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c1c]/80 via-transparent to-transparent" />
+                {/* Название */}
+                <div className="absolute bottom-0 left-0 right-0 p-4">
+                  <span
+                    style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+                    className="text-lg md:text-xl font-light text-white"
+                  >
+                    {t.name}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
