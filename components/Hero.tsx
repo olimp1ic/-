@@ -70,7 +70,7 @@ export default function Hero() {
         {/* Description */}
         <p data-hero style={s}
           className="text-sm md:text-lg font-light text-[#7a7a7a] leading-[1.9] md:leading-[2] max-w-xl mx-auto mb-10 md:mb-12 tracking-wide px-2">
-          Штукатурка, шпаклёвка, покраска и декоративные покрытия
+          Штукатурка, шпаклёвка, покраска и декоративные покрытия{" "}
           <br className="hidden md:block" />
           механизированным способом. Полный цикл на объектах любой площади.
         </p>

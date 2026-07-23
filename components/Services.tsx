@@ -56,11 +56,11 @@ export default function Services() {
               style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
               className="text-4xl md:text-6xl lg:text-7xl font-light text-[#1c1c1c] leading-tight"
             >
-              Услуги
+              Работы
             </h2>
           </div>
           <p className="hidden md:block max-w-xs text-sm text-[#7a7a7a] font-light leading-relaxed text-right">
-            Декоративные покрытия для жилых и коммерческих объектов.
+            Закрываем весь цикл отделки — от голых стен до финишного покрытия.
           </p>
         </div>
 

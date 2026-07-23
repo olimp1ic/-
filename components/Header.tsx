@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import Logo from "./Logo";
 
 const nav = [
-  { label: "Услуги",   href: "#services"  },
+  { label: "Работы",   href: "#services"  },
   { label: "Объекты",  href: "#portfolio" },
   { label: "О нас",    href: "#about"     },
   { label: "Контакты", href: "#contact"   },

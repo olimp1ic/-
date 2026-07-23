@@ -21,7 +21,7 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
-            {["Услуги", "Объекты", "О нас", "Контакты"].map((item, i) => (
+            {["Работы", "Объекты", "О нас", "Контакты"].map((item, i) => (
               <a
                 key={item}
                 href={`#${["services", "portfolio", "about", "contact"][i]}`}
