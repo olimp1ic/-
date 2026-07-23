@@ -9,7 +9,7 @@ import { useState } from "react";
 // 4. Вставь его в строку ниже вместо ВАШ_ID
 // Пока ID не вставлен — форма покажет сообщение об ошибке.
 // ─────────────────────────────────────────────────────────────
-const FORMSPREE_ID = "ВАШ_ID";
+const FORMSPREE_ID = "xeeyrega";
 
 export default function Contact() {
   const [form, setForm] = useState({ name: "", phone: "", message: "" });
