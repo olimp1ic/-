@@ -1,4 +1,4 @@
-// Знак «Смарт Декор» — квадратная рамка с вырезом и буквой М.
+// Знак «Смарт Декор» — рамка с разрывом справа и буквой М внутри.
 // Цвет наследуется от родителя через currentColor.
 
 export default function Logo({ className = "" }: { className?: string }) {
@@ -10,16 +10,20 @@ export default function Logo({ className = "" }: { className?: string }) {
       className={className}
       aria-label="Смарт Декор"
     >
-      {/* Рамка с вырезом */}
-      <path
-        d="M3 3 H97 V38 H88 V12 H12 V88 H54 L62 97 H3 Z"
-        fill="currentColor"
-      />
-      {/* Буква М */}
-      <path
-        d="M50 40 L74 79 L98 40 V97 H87 V62 L74 82 L61 62 V97 H50 Z"
-        fill="currentColor"
-      />
+      <g fill="currentColor">
+        {/* левая вертикаль */}
+        <rect x="4" y="4" width="14" height="88" />
+        {/* верхняя горизонталь */}
+        <rect x="4" y="4" width="92" height="14" />
+        {/* правая вертикаль — верхний отрезок */}
+        <rect x="82" y="4" width="14" height="28" />
+        {/* правая вертикаль — нижний отрезок */}
+        <rect x="82" y="46" width="14" height="46" />
+        {/* нижняя горизонталь (с разрывом справа) */}
+        <rect x="4" y="78" width="56" height="14" />
+        {/* буква М */}
+        <path d="M50 42 L64 66 L78 42 V80 H70 V58 L64 68 L58 58 V80 H50 Z" />
+      </g>
     </svg>
   );
 }
