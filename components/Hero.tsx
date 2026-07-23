@@ -48,7 +48,7 @@ export default function Hero() {
         <div data-hero style={s} className="flex items-center justify-center gap-3 md:gap-4 mb-8 md:mb-10">
           <div className="h-px w-6 md:w-12 bg-[#b0afa9] flex-shrink-0" />
           <span className="text-[9px] md:text-[10px] tracking-[0.25em] md:tracking-[0.5em] uppercase text-[#7a7a7a] font-light text-center">
-            Механизированное нанесение
+            Малярные работы под ключ
           </span>
           <div className="h-px w-6 md:w-12 bg-[#b0afa9] flex-shrink-0" />
         </div>
@@ -70,9 +70,9 @@ export default function Hero() {
         {/* Description */}
         <p data-hero style={s}
           className="text-sm md:text-lg font-light text-[#7a7a7a] leading-relaxed max-w-xl mx-auto mb-10 md:mb-12 tracking-wide px-2">
-          Механизированное нанесение декоративной штукатурки и шпаклёвки.
+          Декоративная штукатурка, шпаклёвка и покраска
           <br className="hidden md:block" />
-          Разные фактуры под жилые и коммерческие объекты.
+          механизированным способом. Объёмы от 5 000 м².
         </p>
 
         {/* CTAs */}

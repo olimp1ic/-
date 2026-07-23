@@ -104,6 +104,19 @@ export default function Contact() {
                 <span className="text-[10px] md:text-[11px] tracking-[0.2em] md:tracking-[0.25em] uppercase text-[#5a5a5a] group-hover:text-[#229ED9] transition-colors duration-300">Telegram</span>
                 <span className="ml-auto text-[9px] md:text-[10px] tracking-[0.1em] text-[#b0afa9] font-light whitespace-nowrap">@smartdecorru</span>
               </a>
+
+              <a
+                href="https://max.ru/u/79299890078"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-4 px-4 md:px-6 py-4 border border-[#d4d3cf] hover:border-[#6E4BF5]/50 hover:bg-[#6E4BF5]/5 transition-all duration-300 bg-white/40"
+              >
+                <svg viewBox="0 0 24 24" className="w-5 h-5 flex-shrink-0 fill-[#6E4BF5]" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zM6.4 17.2V7.2h2.35l3.25 5.35 3.25-5.35h2.35v10h-2.2v-6.35l-2.75 4.45h-1.3l-2.75-4.45v6.35H6.4z"/>
+                </svg>
+                <span className="text-[10px] md:text-[11px] tracking-[0.2em] md:tracking-[0.25em] uppercase text-[#5a5a5a] group-hover:text-[#6E4BF5] transition-colors duration-300">MAX</span>
+                <span className="ml-auto text-[9px] md:text-[10px] tracking-[0.1em] text-[#b0afa9] font-light whitespace-nowrap">+7 929 989 00 78</span>
+              </a>
             </div>
 
             <div className="space-y-4 text-sm font-light border-t border-[#d4d3cf] pt-8">

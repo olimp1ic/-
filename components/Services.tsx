@@ -1,28 +1,27 @@
 "use client";
-import { useState } from "react";
 
 const services = [
   {
     num: "01",
-    title: "Механизированное нанесение",
-    desc: "Наносим декоративную штукатурку и шпаклёвку механизированным способом. Работаем быстрее ручного нанесения и держим ровный слой на больших площадях.",
+    title: "Декоративная штукатурка",
+    desc: "Наносим фактурные покрытия на объектах любой площади. Карта мира, американка, капля, арт-бетон, песчаник, шёлк — подберём фактуру под проект.",
   },
   {
     num: "02",
-    title: "Декоративные фактуры",
-    desc: "Делаем разные фактуры под задачу объекта: карта мира, американка, капля, арт-бетон, песчаник, шёлк. Подберём вариант под ваш интерьер.",
+    title: "Базовая шпаклёвка",
+    desc: "Выводим стены и потолки под финишную отделку. Ровная геометрия и подготовленное основание под покраску или декоративный слой.",
   },
   {
     num: "03",
-    title: "Штукатурка и шпаклёвка",
-    desc: "Готовим поверхность и наносим штукатурку и шпаклёвку под финишную отделку. От подготовки основания до готового покрытия.",
+    title: "Безвоздушная покраска",
+    desc: "Красим стены и потолки промышленными окрасочными станциями. Равномерный слой без полос и наплывов, высокая скорость на больших объёмах.",
   },
 ];
 
 // ────────────────────────────────────────────────────────────
-// Фото фактур: положи файлы в /public/images/textures/ с именем из slug.
-// Расширение подбирается автоматически: .png → .jpg → .jpeg → .webp
-// Пока фото нет — карточка тёмная с названием.
+// Фото фактур лежат в /public/images/textures/
+// Имя файла = slug + .jpg  (например karta-mira.jpg)
+// Если файла нет — карточка остаётся тёмной с названием.
 // ────────────────────────────────────────────────────────────
 const textures = [
   { name: "Карта мира", slug: "karta-mira" },
@@ -33,24 +32,6 @@ const textures = [
   { name: "Шёлк", slug: "shelk" },
 ];
 
-
-// Подбирает расширение файла автоматически
-const EXTS = ["png", "jpg", "jpeg", "webp"];
-
-function TextureImage({ slug, name }: { slug: string; name: string }) {
-  const [idx, setIdx] = useState(0);
-  if (idx >= EXTS.length) return null;
-
-  return (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img
-      src={`/images/textures/${slug}.${EXTS[idx]}`}
-      alt={`Фактура ${name}`}
-      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-      onError={() => setIdx((n) => n + 1)}
-    />
-  );
-}
 
 export default function Services() {
   return (
@@ -124,7 +105,13 @@ export default function Services() {
                 key={t.name}
                 className={`reveal reveal-delay-${(i % 6) + 1} group relative overflow-hidden aspect-square bg-[#1c1c1c]`}
               >
-                <TextureImage slug={t.slug} name={t.name} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={`/images/textures/${t.slug}.jpg`}
+                  alt={t.name}
+                  loading="lazy"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
                 {/* Затемнение */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c1c]/80 via-transparent to-transparent" />
                 {/* Название */}

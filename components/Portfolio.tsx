@@ -3,10 +3,9 @@ import { useState } from "react";
 
 // ────────────────────────────────────────────────────────────
 // ЛОГОТИПЫ ЖК
-// Положи файл в /public/images/objects/ с именем из поля slug.
-// Расширение подбирается автоматически: .png → .jpg → .jpeg → .webp
-// Например для slug "wave" подойдёт wave.png ИЛИ wave.jpg
-// Пока файла нет — выводится название текстом.
+// Файлы лежат в /public/images/objects/
+// Имя файла = slug + .jpg  (например wave.jpg)
+// Если файла нет — выводится название текстом.
 // ────────────────────────────────────────────────────────────
 const projects = [
   {
@@ -61,12 +60,8 @@ const projects = [
 ];
 
 
-// Подбирает расширение файла автоматически
-const EXTS = ["png", "jpg", "jpeg", "webp"];
-
 function LogoImage({ slug, title }: { slug: string; title: string }) {
-  const [idx, setIdx] = useState(0);
-  const failed = idx >= EXTS.length;
+  const [failed, setFailed] = useState(false);
 
   if (failed) {
     return (
@@ -82,10 +77,11 @@ function LogoImage({ slug, title }: { slug: string; title: string }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={`/images/objects/${slug}.${EXTS[idx]}`}
+      src={`/images/objects/${slug}.jpg`}
       alt={title}
+      loading="lazy"
       className="max-h-full max-w-full object-contain opacity-75 group-hover:opacity-100 transition-opacity duration-500"
-      onError={() => setIdx((n) => n + 1)}
+      onError={() => setFailed(true)}
     />
   );
 }
