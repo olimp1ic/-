@@ -60,15 +60,15 @@ export default function Hero() {
         </h1>
         <h1 data-hero style={{ ...s, fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
           className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light leading-[0.9] tracking-[-0.02em] text-[#1c1c1c] mb-16">
-          любой площади
+          и штукатурка
         </h1>
 
         {/* Description */}
         <p data-hero style={s}
           className="text-base md:text-lg font-light text-[#7a7a7a] leading-relaxed max-w-xl mx-auto mb-12 tracking-wide">
-          Фактурные штукатурки — Капля, Американка, Песчаник, Бетон.
+          Механизированное нанесение декоративной штукатурки и шпаклёвки.
           <br className="hidden md:block" />
-          От элитных апартаментов до крупных коммерческих пространств.
+          Разные фактуры под жилые и коммерческие объекты.
         </p>
 
         {/* CTAs */}

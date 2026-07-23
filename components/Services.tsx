@@ -1,28 +1,28 @@
 const services = [
   {
     num: "01",
-    title: "Фактурные штукатурки",
-    desc: "Капля, американка, песчаник, бетон — механизированное нанесение обеспечивает идеальную геометрию и однородность фактуры на любой площади.",
-    tags: ["Капля", "Американка", "Песчаник", "АртБетон"],
+    title: "Механизированное нанесение",
+    desc: "Наносим декоративную штукатурку и шпаклёвку машинным способом. Работаем быстрее ручного нанесения и держим ровный слой на больших площадях.",
   },
   {
     num: "02",
-    title: "Декоративный бетон",
-    desc: "Имитация бетонных поверхностей с промышленной эстетикой. Бесшовное покрытие для стен, колонн и фасадных зон — без компромиссов по качеству.",
-    tags: ["Микробетон", "Арт-бетон", "Фасады"],
+    title: "Декоративные фактуры",
+    desc: "Делаем разные фактуры под задачу объекта: карта мира, американка, капля, арт-бетон, песчаник, шёлк. Подберём вариант под ваш интерьер.",
   },
   {
     num: "03",
-    title: "Механизированное нанесение",
-    desc: "Промышленное оборудование позволяет работать на объектах от 400 до 8 600 м². Скорость и равномерность недостижимы ручным способом.",
-    tags: ["От 400 м²", "До 8 600 м²", "ЖК / Коммерция"],
+    title: "Штукатурка и шпаклёвка",
+    desc: "Готовим поверхность и наносим штукатурку и шпаклёвку под финишную отделку. От подготовки основания до готового покрытия.",
   },
-  {
-    num: "04",
-    title: "Отделка под ключ",
-    desc: "Полный цикл — от подготовки основания до финишного покрытия. Работаем с крупными застройщиками: LEVEL, ЛСР, COLDY, Монарх, Садовое кольцо.",
-    tags: ["Подготовка", "Грунтование", "Финиш"],
-  },
+];
+
+const textures = [
+  "Карта мира",
+  "Американка",
+  "Капля",
+  "Арт-бетон",
+  "Песчаник",
+  "Шёлк",
 ];
 
 export default function Services() {
@@ -47,22 +47,20 @@ export default function Services() {
             </h2>
           </div>
           <p className="hidden md:block max-w-xs text-sm text-[#7a7a7a] font-light leading-relaxed text-right">
-            Каждый объект — индивидуальная задача. Шаблонов не существует.
+            Декоративные покрытия для жилых и коммерческих объектов.
           </p>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-[#d4d3cf]">
+        {/* Grid — 3 cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-[#d4d3cf]">
           {services.map((svc, i) => (
             <div
               key={svc.num}
               className={`reveal reveal-delay-${i + 1} group relative bg-[#f5f4f2] hover:bg-[#eeede9] p-10 md:p-14 overflow-hidden cursor-default transition-colors duration-500`}
             >
-              {/* Hover lines */}
               <div className="absolute bottom-0 left-0 h-px w-0 bg-[#1c1c1c] group-hover:w-full transition-all duration-700" />
               <div className="absolute top-0 right-0 w-px h-0 bg-[#b0afa9] group-hover:h-full transition-all duration-700 delay-100" />
 
-              {/* Big number */}
               <span
                 style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
                 className="block text-[80px] md:text-[100px] font-light text-[#e8e7e3] group-hover:text-[#d4d3cf] leading-none mb-6 select-none transition-colors duration-500"
@@ -70,33 +68,40 @@ export default function Services() {
                 {svc.num}
               </span>
 
-              {/* Title */}
               <h3
                 style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-                className="text-3xl md:text-4xl font-light text-[#1c1c1c] mb-4"
+                className="text-3xl md:text-4xl font-light text-[#1c1c1c] mb-4 leading-tight"
               >
                 {svc.title}
               </h3>
 
-              {/* Desc */}
-              <p className="text-sm text-[#7a7a7a] group-hover:text-[#5a5a5a] font-light leading-relaxed mb-8 transition-colors duration-500">
+              <p className="text-sm text-[#7a7a7a] group-hover:text-[#5a5a5a] font-light leading-relaxed transition-colors duration-500">
                 {svc.desc}
               </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2">
-                {svc.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[10px] tracking-[0.25em] uppercase text-[#b0afa9] border border-[#d4d3cf] group-hover:border-[#5a5a5a]/30 group-hover:text-[#5a5a5a] px-3 py-1 transition-all duration-500"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
             </div>
           ))}
         </div>
+
+        {/* Textures row */}
+        <div className="mt-2 bg-[#1c1c1c] px-8 md:px-14 py-10 md:py-12 reveal">
+          <div className="flex flex-col md:flex-row md:items-center gap-6 md:gap-12">
+            <span className="text-[10px] tracking-[0.4em] uppercase text-[#b0afa9] font-light whitespace-nowrap">
+              Наши фактуры
+            </span>
+            <div className="flex flex-wrap gap-x-8 gap-y-4">
+              {textures.map((t) => (
+                <span
+                  key={t}
+                  style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+                  className="text-2xl md:text-3xl font-light text-[#f5f4f2] hover:text-[#b0afa9] transition-colors duration-300 cursor-default"
+                >
+                  {t}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
   );

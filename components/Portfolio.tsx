@@ -89,7 +89,7 @@ export default function Portfolio() {
             </h2>
           </div>
           <p className="hidden md:block max-w-xs text-sm text-[#7a7a7a] font-light leading-relaxed text-right">
-            Крупнейшие ЖК Москвы и области. Сотни тысяч квадратных метров.
+            Объекты в Москве и области, где мы наносили декоративные покрытия.
           </p>
         </div>
 
