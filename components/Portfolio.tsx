@@ -24,15 +24,15 @@ const projects = [
   {
     id: 3,
     title: "ЖК Nice Loft",
-    texture: "Капля",
+    texture: "Арт-бетон",
     developer: "COLDY",
     img: "/images/objects/niceloft.jpg",
   },
   {
     id: 4,
     title: "ЖК Варшавские Ворота",
-    texture: "Декоративная штукатурка",
-    developer: "",
+    texture: "Карта мира",
+    developer: "RG-Девелопмент",
     img: "/images/objects/warsaw.jpg",
   },
   {
@@ -48,6 +48,13 @@ const projects = [
     texture: "Американка",
     developer: "LEVEL",
     img: "/images/objects/savvinsky.jpg",
+  },
+  {
+    id: 7,
+    title: "ЖК М-5",
+    texture: "Капля",
+    developer: "Садовое кольцо",
+    img: "/images/objects/m5.jpg",
   },
 ];
 
