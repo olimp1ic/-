@@ -2,12 +2,10 @@
 import { useState } from "react";
 
 // ─────────────────────────────────────────────────────────────
-// НАСТРОЙКА ОТПРАВКИ ЗАЯВОК НА ПОЧТУ:
-// 1. Зарегистрируйся на https://formspree.io (бесплатно)
-// 2. Создай новую форму, укажи почту info.smartdecor@mail.ru
-// 3. Скопируй ID формы (выглядит как "xldegzvp")
-// 4. Вставь его в строку ниже вместо ВАШ_ID
-// Пока ID не вставлен — форма покажет сообщение об ошибке.
+// Заявки уходят на почту через Formspree.
+// Чтобы сменить получателя — зайди в кабинет formspree.io
+// и поменяй email в настройках формы.
+// Чтобы подключить другую форму — вставь её ID ниже.
 // ─────────────────────────────────────────────────────────────
 const FORMSPREE_ID = "xeeyrega";
 
@@ -24,12 +22,6 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-
-    if (FORMSPREE_ID === "ВАШ_ID") {
-      setError("Форма ещё не подключена. Позвоните нам или напишите в WhatsApp.");
-      return;
-    }
-
     setLoading(true);
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
