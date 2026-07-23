@@ -54,9 +54,9 @@ export default function Services() {
             </div>
             <h2
               style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-              className="text-4xl md:text-6xl lg:text-7xl font-light text-[#1c1c1c] leading-tight"
+              className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-light text-[#1c1c1c] leading-tight"
             >
-              Работы
+              Перечень работ
             </h2>
           </div>
           <p className="hidden md:block max-w-xs text-sm text-[#7a7a7a] font-light leading-relaxed text-right">
