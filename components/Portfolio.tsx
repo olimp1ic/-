@@ -1,11 +1,12 @@
 "use client";
+import { useState } from "react";
 
 // ────────────────────────────────────────────────────────────
-// Чтобы добавить своё фото объекта:
-// 1. Положи файл в папку /public/images/objects/
-// 2. Пропиши имя файла в поле img (например "/images/objects/wave.png")
-// Формат: логотип ЖК на прозрачном фоне (PNG) или на белом. Показывается
-// по центру карточки. Пока файла нет — выводится название текстом.
+// ЛОГОТИПЫ ЖК
+// Положи файл в /public/images/objects/ с именем из поля slug.
+// Расширение подбирается автоматически: .png → .jpg → .jpeg → .webp
+// Например для slug "wave" подойдёт wave.png ИЛИ wave.jpg
+// Пока файла нет — выводится название текстом.
 // ────────────────────────────────────────────────────────────
 const projects = [
   {
@@ -13,51 +14,81 @@ const projects = [
     title: "ЖК Wave",
     texture: "Песчаник · Капля",
     developer: "ЛСР",
-    img: "/images/objects/wave.png",
+    slug: "wave",
   },
   {
     id: 2,
     title: "ЖК Level Мичуринский",
     texture: "Американка",
     developer: "LEVEL",
-    img: "/images/objects/level-michurinsky.png",
+    slug: "level-michurinsky",
   },
   {
     id: 3,
     title: "ЖК Nice Loft",
     texture: "Арт-бетон",
     developer: "COLDY",
-    img: "/images/objects/niceloft.png",
+    slug: "niceloft",
   },
   {
     id: 4,
     title: "ЖК Варшавские Ворота",
     texture: "Карта мира",
     developer: "RG-Девелопмент",
-    img: "/images/objects/warsaw.png",
+    slug: "warsaw",
   },
   {
     id: 5,
     title: "ЖК Level Южнопортовая",
     texture: "Американка",
     developer: "LEVEL",
-    img: "/images/objects/level-yuzhnoportovaya.png",
+    slug: "level-yuzhnoportovaya",
   },
   {
     id: 6,
     title: "ЖК Саввинский 17",
     texture: "Американка",
     developer: "LEVEL",
-    img: "/images/objects/savvinsky.png",
+    slug: "savvinsky",
   },
   {
     id: 7,
     title: "ЖК М-5",
     texture: "Капля",
     developer: "Садовое кольцо",
-    img: "/images/objects/m5.png",
+    slug: "m5",
   },
 ];
+
+
+// Подбирает расширение файла автоматически
+const EXTS = ["png", "jpg", "jpeg", "webp"];
+
+function LogoImage({ slug, title }: { slug: string; title: string }) {
+  const [idx, setIdx] = useState(0);
+  const failed = idx >= EXTS.length;
+
+  if (failed) {
+    return (
+      <span
+        style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+        className="text-[#b0afa9] text-base md:text-xl font-light text-center leading-tight"
+      >
+        {title}
+      </span>
+    );
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={`/images/objects/${slug}.${EXTS[idx]}`}
+      alt={title}
+      className="max-h-full max-w-full object-contain opacity-75 group-hover:opacity-100 transition-opacity duration-500"
+      onError={() => setIdx((n) => n + 1)}
+    />
+  );
+}
 
 export default function Portfolio() {
   return (
@@ -94,28 +125,7 @@ export default function Portfolio() {
             >
               {/* Логотип ЖК */}
               <div className="h-24 md:h-32 flex items-center justify-center p-5 md:p-7">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={p.img}
-                  alt={p.title}
-                  className="max-h-full max-w-full object-contain opacity-70 group-hover:opacity-100 transition-opacity duration-500"
-                  onError={(e) => {
-                    const el = e.currentTarget as HTMLImageElement;
-                    el.style.display = "none";
-                    const ph = el.nextElementSibling as HTMLElement | null;
-                    if (ph) ph.style.display = "block";
-                  }}
-                />
-                {/* Заглушка, если логотипа ещё нет */}
-                <span
-                  style={{
-                    fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)",
-                    display: "none",
-                  }}
-                  className="text-[#b0afa9] text-lg md:text-xl font-light text-center leading-tight"
-                >
-                  {p.title}
-                </span>
+                <LogoImage slug={p.slug} title={p.title} />
               </div>
 
               {/* Подпись */}

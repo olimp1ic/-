@@ -125,7 +125,7 @@ export default function Contact() {
               </div>
               <div className="flex items-start gap-4">
                 <span className="text-[9px] md:text-[10px] tracking-[0.25em] uppercase text-[#b0afa9] w-16 md:w-20 flex-shrink-0 mt-1">Адрес</span>
-                <span className="text-[#5a5a5a] leading-relaxed">Московская область,<br />г. Балашиха, ул. Свердлова, д. 10</span>
+                <span className="text-[#5a5a5a] leading-relaxed">г. Москва, ул. Потаповская Роща,<br />д. 2, корп. 4, помещение 47К/П</span>
               </div>
             </div>
           </div>

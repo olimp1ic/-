@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useRef } from "react";
+import Logo from "./Logo";
 
 export default function Hero() {
   const ref = useRef<HTMLDivElement>(null);
@@ -26,6 +27,9 @@ export default function Hero() {
       {/* Radial glow */}
       <div className="absolute inset-0 pointer-events-none"
         style={{ background: "radial-gradient(ellipse 80% 60% at 50% 40%, rgba(46,46,46,0.04) 0%, transparent 70%)" }} />
+
+      {/* Фоновый знак */}
+      <Logo className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[min(78vw,620px)] h-auto text-[#1c1c1c] opacity-[0.028] pointer-events-none select-none" />
 
       {/* Subtle grid */}
       <div className="absolute inset-0 pointer-events-none opacity-[0.04]"

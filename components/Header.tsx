@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import Logo from "./Logo";
 
 const nav = [
   { label: "Услуги",   href: "#services"  },
@@ -29,16 +30,19 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-5 md:px-12 flex items-center justify-between h-16 md:h-20">
 
         {/* Logo */}
-        <a href="#" className="flex flex-col leading-none group">
-          <span
-            style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
-            className="text-lg md:text-2xl font-light tracking-[0.12em] md:tracking-[0.15em] text-[#1c1c1c] group-hover:text-[#5a5a5a] transition-colors duration-500 whitespace-nowrap"
-          >
-            СМАРТ ДЕКОР
-          </span>
-          <span className="text-[8px] md:text-[10px] font-light tracking-[0.25em] md:tracking-[0.4em] text-[#b0afa9] mt-0.5 uppercase whitespace-nowrap">
-            Декоративные покрытия
-          </span>
+        <a href="#" className="flex items-center gap-2.5 md:gap-3.5 group">
+          <Logo className="w-7 h-7 md:w-9 md:h-9 text-[#1c1c1c] group-hover:text-[#5a5a5a] transition-colors duration-500 flex-shrink-0" />
+          <div className="flex flex-col leading-none">
+            <span
+              style={{ fontFamily: "var(--font-cormorant, 'Cormorant Garamond', serif)" }}
+              className="text-lg md:text-2xl font-light tracking-[0.12em] md:tracking-[0.15em] text-[#1c1c1c] group-hover:text-[#5a5a5a] transition-colors duration-500 whitespace-nowrap"
+            >
+              СМАРТ ДЕКОР
+            </span>
+            <span className="text-[8px] md:text-[10px] font-light tracking-[0.25em] md:tracking-[0.4em] text-[#b0afa9] mt-0.5 uppercase whitespace-nowrap">
+              Декоративные покрытия
+            </span>
+          </div>
         </a>
 
         {/* Desktop nav */}

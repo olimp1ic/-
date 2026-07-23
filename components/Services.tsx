@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 
 const services = [
   {
@@ -19,17 +20,37 @@ const services = [
 ];
 
 // ────────────────────────────────────────────────────────────
-// Фото фактур: положи файлы в /public/images/textures/
-// и пропиши имя в поле img. Пока фото нет — карточка тёмная с названием.
+// Фото фактур: положи файлы в /public/images/textures/ с именем из slug.
+// Расширение подбирается автоматически: .png → .jpg → .jpeg → .webp
+// Пока фото нет — карточка тёмная с названием.
 // ────────────────────────────────────────────────────────────
 const textures = [
-  { name: "Карта мира", img: "/images/textures/karta-mira.jpg" },
-  { name: "Американка", img: "/images/textures/amerikanka.jpg" },
-  { name: "Капля",      img: "/images/textures/kaplya.jpg" },
-  { name: "Арт-бетон",  img: "/images/textures/art-beton.jpg" },
-  { name: "Песчаник",   img: "/images/textures/peschanik.jpg" },
-  { name: "Шёлк",       img: "/images/textures/shelk.jpg" },
+  { name: "Карта мира", slug: "karta-mira" },
+  { name: "Американка", slug: "amerikanka" },
+  { name: "Капля", slug: "kaplya" },
+  { name: "Арт-бетон", slug: "art-beton" },
+  { name: "Песчаник", slug: "peschanik" },
+  { name: "Шёлк", slug: "shelk" },
 ];
+
+
+// Подбирает расширение файла автоматически
+const EXTS = ["png", "jpg", "jpeg", "webp"];
+
+function TextureImage({ slug, name }: { slug: string; name: string }) {
+  const [idx, setIdx] = useState(0);
+  if (idx >= EXTS.length) return null;
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={`/images/textures/${slug}.${EXTS[idx]}`}
+      alt={`Фактура ${name}`}
+      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+      onError={() => setIdx((n) => n + 1)}
+    />
+  );
+}
 
 export default function Services() {
   return (
@@ -103,15 +124,7 @@ export default function Services() {
                 key={t.name}
                 className={`reveal reveal-delay-${(i % 6) + 1} group relative overflow-hidden aspect-square bg-[#1c1c1c]`}
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={t.img}
-                  alt={`Фактура ${t.name}`}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  onError={(e) => {
-                    (e.currentTarget as HTMLImageElement).style.opacity = "0";
-                  }}
-                />
+                <TextureImage slug={t.slug} name={t.name} />
                 {/* Затемнение */}
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1c1c1c]/80 via-transparent to-transparent" />
                 {/* Название */}
